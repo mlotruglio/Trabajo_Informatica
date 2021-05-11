@@ -37,7 +37,7 @@ body::body() {
 	fclose(file);
 }
 char* body::getmodel() {
-	char string[50];
+	static char string[50];
 	if (model == 1)strcpy(string, "./modelos3d/cuerpo1.txt");
 	if (model == 2)strcpy(string, "./modelos3d/cuerpo2.txt");
 	if (model == 3)strcpy(string, "./modelos3d/cuerpo3.txt");
