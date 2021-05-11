@@ -8,7 +8,7 @@ cannon::cannon() {
 	updatestats();
 }
 char* cannon::getmodel() {
-	char string[50];
+	static char string[50];
 	if (model == 1)strcpy(string, "./modelos3d/cannon1.txt");
 	if (model== 2)strcpy(string, "./modelos3d/cannon2.txt");
 	if (model == 3)strcpy(string, "./modelos3d/cannon3.txt");
