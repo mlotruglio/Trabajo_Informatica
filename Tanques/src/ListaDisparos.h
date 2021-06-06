@@ -16,7 +16,7 @@ public:
 	bool add(Disparo*);
 	void draw();
 	void destruirContenido();
-	void mueve(float t);
+	void refresh(float t);
 	void eliminar(int index); // la borra segun su indice
 	void eliminar(Disparo* e); // elimina una esfera segun su direccion de memoria
 

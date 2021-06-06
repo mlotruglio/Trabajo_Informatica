@@ -1,101 +1,85 @@
 #include "ListaEnemigos.h"
-#include <stdio.h>
-#include <Cstring>
-#include <cmath>
-#include "draw.h"
-#include "freeglut.h"
-#define pi 3.14159265358979323846264
 
-vector3D rotatevector(vector3D v, float angle) {
-	vector3D vout;
-	if (sqrt(v.x * v.x + v.y * v.y + v.z * v.z) != 0) {
-		float alpha = -atan(v.z / v.x);
-		float gamma = atan(v.y / sqrt(v.x * v.x + v.z * v.z));
-		vout.x = cos(alpha - angle*pi/180) * cos(gamma) * sqrt(v.x * v.x + v.y * v.y + v.z * v.z);
-		vout.z = sin(alpha - angle*pi/180) * cos(gamma) * sqrt(v.x * v.x + v.y * v.y + v.z * v.z);
-		vout.y = v.y;
-	}
-	return vout;
-}
-ListaEnemigos::ListaEnemigos(){
-	number = 0;
+ListaEnemigos::ListaEnemigos() {
+	numero = 0;
 	for (int i = 0; i < MAX_ENEMIGOS; i++)
 		list[i] = 0;
+}
+ListaEnemigos::~ListaEnemigos() {}
+
+bool ListaEnemigos::add(Enemigo* e) {
+	int control = 0;
+	for (int i = 0; i < MAX_ENEMIGOS; i++)
+		if (list[i] == e) {
+			control++;
+			return false;
+		}
+
+	if ((numero < MAX_ENEMIGOS) && (control == 0))
+		list[numero++] = e; // último puesto sin rellenar
+	else
+		return false; // capacidad máxima alcanzada
+	return true;
+}
+void ListaEnemigos::destruirContenido() {
+	for (int i = 0; i < numero; i++) // destrucción de esferas contenidas
+		delete list[i];
+	numero = 0; // inicializa lista 
+}
+void ListaEnemigos::draw() {
+	for (int i = 0; i < numero; i++)
+		list[i]->drawtank();
+}
+void ListaEnemigos::refresh(float t) {
+	for (int i = 0; i < numero; i++)
+		list[i]->refresh(t);
+}
+
+Enemigo* ListaEnemigos::operator [](int i) {
+	if (i >= numero)
+		if (i < 0)
+			i = 0;
+	return list[i];
+}
+
+void ListaEnemigos::colision(tank& Tank) 
+{
+	for (int i = 0; i < numero; i++)
+	{
+		Interaction::choque(Tank, *(list[i]));	
 	}
-void ListaEnemigos::agregarEnemigos() 
-{
-		FILE* file = fopen("map.txt", "r");
-		char key;
-		int i = 0;
-		int j = 0;
-		if (file == NULL) {
-			printf("hello");
-		}
-		else {
-			while (!feof(file)) {
-				fflush(file);
-				fscanf(file, "%c", &key);
-				if (key == 'E') {
-
-					Enemigo* aux = new Enemigo((float)-j, 0, (float)i, 1);
-					add(aux);
-				}
-				i += 1;
-				if (key == '\n' || key == EOF) {
-					j += 1; i = 0;
-				}
-			}
-		}
-	
-		}
-
-void ListaEnemigos::dibuja()
+}
+void ListaEnemigos::colision() 
 {
 	for (int i = 0; i < numero; i++)
-		lista[i]->dibuja();
+	{
+		for (int j= i+1; j<numero;j++)
+			Interaction::choque(*list[i], *list[j]);
+	}
 }
-
-void ListaEnemigos::mueve(float t)
-{
+/*void ListaEnemigos::colision(Wall& Pared) {
 	for (int i = 0; i < numero; i++)
-		lista[i]->mueve(t);
-}
+	{
+		Interaction::colision(*list[i], Pared);
+			
+	}
+}*/
 
-
-
-void ListaEnemigos::rebote()
+void ListaEnemigos::eliminar(int index)
 {
-	for (int i = 0; i < numero - 1; i++)
-		for (int j = i + 1; j < numero; j++)
-			Interaccion::rebote(*(lista[i]), *(lista[j]));
+	if ((index < 0) || (index >= numero))
+		return;
+	delete list[index];
+	numero--;
+	for (int i = index; i < numero; i++)
+		list[i] = list[i + 1];
 }
-
-void ListaEnemigos::rebote(Pared p)
-{
-	for (int i = 0; i < numero; i++)
-		Interaccion::rebote(*(lista[i]), p);
-}
-
-void ListaEnemigos::destruirContenido()
-{
-	for (int i = 0; i < numero; i++)
-		delete lista[i];
-
-	numero = 0;
-}
-
-
-
 void ListaEnemigos::eliminar(Enemigo* e)
 {
 	for (int i = 0; i < numero; i++)
-		if (lista[i] == e)
+		if (list[i] == e)
 		{
 			eliminar(i);
 			return;
 		}
-
 }
-
-
-	

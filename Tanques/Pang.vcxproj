@@ -19,12 +19,13 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="ListaDisparos.cpp" />
     <ClCompile Include="src\camera.cpp" />
     <ClCompile Include="src\ColorRGB.cpp" />
     <ClCompile Include="src\Disparo.cpp" />
     <ClCompile Include="src\Enemigo.cpp" />
     <ClCompile Include="src\Interaction.cpp" />
+    <ClCompile Include="src\ListaDisparos.cpp" />
+    <ClCompile Include="src\ListaEnemigos.cpp" />
     <ClCompile Include="src\mundo.cpp" />
     <ClCompile Include="src\Pang.cpp" />
     <ClCompile Include="src\inputstates.cpp" />
@@ -40,6 +41,7 @@
     <ClInclude Include="src\Enemigo.h" />
     <ClInclude Include="src\Interaction.h" />
     <ClInclude Include="src\ListaDisparos.h" />
+    <ClInclude Include="src\ListaEnemigos.h" />
     <ClInclude Include="src\mundo.h" />
     <ClInclude Include="src\inputstates.h" />
     <ClInclude Include="src\tank.h" />

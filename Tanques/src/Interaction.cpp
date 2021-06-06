@@ -19,7 +19,7 @@ void Interaction::colision(tank& Tank, Wall wall) {
 			if (aux > -v.z)Tank.position.z = wall.position.z -aux;
 		}
 }
-void Interaction::colision(Enemigo& Tank, Wall wall) {
+void Interaction::colision(Enemigo& Tank, Wall &wall) {
 	vector3D v = Tank.position - wall.position;
 	float aux = wall.side / 2 + Tank.hitboxradius;
 	float alpha = atan2(v.x, v.z) * 180 / pi;
@@ -52,6 +52,22 @@ bool Interaction::colision(Enemigo Tank, Disparo disparo) {
 	if (d.modulo() < Tank.hitboxradius + disparo.radio)
 		return true;
 	return false;
+}
+void Interaction::choque(Enemigo& tank1, Enemigo& tank2)
+{
+	{
+		vector3D d = (tank1.position - tank2.position);
+		if (d.modulo() < tank1.hitboxradius + tank2.hitboxradius) {
+
+			vector3D p = (tank1.position + tank2.position) / 2.0f;
+			vector3D v = (tank1.position - tank2.position);
+
+			tank1.position = p + v.unitario() * (tank1.hitboxradius + tank2.hitboxradius) / 2.0f;
+			tank2.position = p - v.unitario() * (tank1.hitboxradius + tank2.hitboxradius) / 2.0f;
+		}
+
+	}
+
 }
 /*bool Interaction::colision(Wall& pared, Disparo& disparo) {
 	vector3D v = disparo.position - (pared.position);

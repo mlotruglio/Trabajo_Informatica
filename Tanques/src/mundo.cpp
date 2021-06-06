@@ -10,42 +10,61 @@ mundo::mundo(){
 	tanque.setorientation(camara.getorientation());
 	paredes.loadmap();
 }
+
 void mundo::refresh() {
 	tecla();
 	raton();
-	disparo.refresh(0.025f);
+	//disparo.refresh(0.025f);
+	disparos.refresh(0.025f);
 	camara.refresh(estadosentradas.getkeystates());
 	tanque.refresh(0.025f);
 	paredes.colision(tanque);
-	enemigo.refresh(0.025f);
-	Interaction::choque(tanque, enemigo);
-	paredes.colision(enemigo);
-	Interaction::colision(enemigo, disparo);
+	enemigos.refresh(0.025f);
+	//enemigo.refresh(0.025f);
+	enemigos.colision(tanque);
+	enemigos.colision();
+
+	//paredes.colision(enemigo);
+	//Interaction::colision(enemigo, disparo);
 	//paredes.colision(disparo);
 
-	for (int i = 0; i < disparos.getNumero() ; i++) {
+	for (int i = 0; i < disparos.getNumero() ; i++) 
+	{
 		for (int j = 0; j < paredes.getNumero(); j++) {
 			if (Interaction::colision(*disparos[i], *paredes[j])) {
 				if(disparos[i]->setRebote())
 					disparos.eliminar(disparos[i]);
 			}
-			if(disparos[i]->getTime()<=0)
-				disparos.eliminar(disparos[i]);
+			
 		}
+		for (int a = 0; a < enemigos.getNumero(); a++)
+		{
+			if (Interaction::colision(*enemigos[a], *disparos[i])) {
+					disparos.eliminar(disparos[i]);
+					enemigos.eliminar(enemigos[a]);
+			}
+
+		}
+		
+	
+		if (disparos[i]->getTime() <= 0)
+			disparos.eliminar(disparos[i]);
 	}
 
-	Disparo* aux = disparos.colision(enemigo);
-	if (aux != 0) {//si alguna esfera ha chocado
-		disparos.eliminar(aux);
+	for (int p = 0; p < paredes.getNumero(); p++)
+	{
+		for (int a = 0; a < enemigos.getNumero(); a++)
+		{
+			Interaction::colision(*enemigos[a], *paredes[p]);
+		}
+
 	}
-	disparos.mueve(0.025f);
 }
 void mundo::draw(){
 	camara.drawcamera();
 	tanque.drawtank();
 	paredes.drawwalls();
-	disparo.dibuja();
-	enemigo.drawtank();
+	enemigos.draw();
 	disparos.draw();
 /*
 	vector3D v = tanque.getfireposition();
@@ -107,4 +126,5 @@ void mundo::tecla()
 mundo::~mundo()
 {
 	disparos.destruirContenido();
+	enemigos.destruirContenido();
 }

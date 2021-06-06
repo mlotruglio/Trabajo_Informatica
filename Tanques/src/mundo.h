@@ -6,6 +6,7 @@
 #include "Interaction.h"
 #include "Disparo.h"
 #include "Enemigo.h"
+#include "ListaEnemigos.h"
 #include "ListaDisparos.h"
 
 class mundo{
@@ -14,9 +15,10 @@ class mundo{
 	camera camara;
 	WallList paredes;
 	Interaction interaccion;
-	Disparo disparo;
-	Enemigo enemigo;
+	//Disparo disparo;
+	//Enemigo enemigo;
 	ListaDisparos disparos;
+	ListaEnemigos enemigos;
 public:
 	mundo();
 	virtual ~mundo();
