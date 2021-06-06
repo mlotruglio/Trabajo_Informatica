@@ -1,0 +1,21 @@
+type minigun
+fireposition 0.4 0.075 0
+health 10
+armor -2
+speed 1
+damage 0.3
+circle 0.15 +0 0 0 -1 0 0
+circle 0.15 0.1 0 0 1 0 0
+circle 0.125 0.215 0 0 -1 0 0
+circle 0.125 0.24 0 0 1 0 0
+circle 0.125 0.355 0 0 -1 0 0
+circle 0.125 0.38 0 0 1 0 0
+cylinder 0.15 0.1 0 0 0 90 0
+cylinder 0.125 0.025 0.215 0 0 90 0
+cylinder 0.125 0.025 0.355 0 0 90 0
+cylinder 0.025 0.3 0.1 0.075 0 90 0
+cylinder 0.025 0.3 0.1 -0.075 0 90 0
+cylinder 0.025 0.3 0.1 0.0375 -0.065 90 0
+cylinder 0.025 0.3 0.1 0.0375 +0.065 90 0
+cylinder 0.025 0.3 0.1 -0.0375 -0.065 90 0
+cylinder 0.025 0.3 0.1 -0.0375 +0.065 90 0
