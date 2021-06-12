@@ -27,29 +27,27 @@ void Pared::draw() {
 		glRotatef(90 * i, 0, 1, 0);
 		glEnable(GL_TEXTURE_2D);
 		glBindTexture(GL_TEXTURE_2D, ETSIDI::getTexture("imagenes/pared.png").id);
-		glDisable(GL_LIGHTING);
 		glBegin(GL_POLYGON);
 		glColor3f(1, 1, 1);
+		glNormal3f(1, 0, 0);
 		glTexCoord2d(0, 1); glVertex3f(tamaño / 2.0, 0, -tamaño / 2.0);
 		glTexCoord2d(1, 1); glVertex3f(tamaño / 2.0, 0, tamaño / 2.0);
 		glTexCoord2d(1, 0);  glVertex3f(tamaño / 2.0, tamaño, tamaño / 2.0); 
 		glTexCoord2d(0, 0); glVertex3f(tamaño / 2.0, tamaño, -tamaño / 2.0); 
 		glEnd();
-		glEnable(GL_LIGHTING);
 		glDisable(GL_TEXTURE_2D);
 		glPopMatrix();
 	}
 	glEnable(GL_TEXTURE_2D);
 	glBindTexture(GL_TEXTURE_2D, ETSIDI::getTexture("imagenes/pared.png").id);
-	glDisable(GL_LIGHTING);
 	glBegin(GL_POLYGON);
 	glColor3f(1, 1, 1);
+	glNormal3f(0, 1, 0);
 	glTexCoord2d(0, 1); glVertex3f(-tamaño / 2.0, tamaño, -tamaño / 2.0);
 	glTexCoord2d(1, 1); glVertex3f(-tamaño / 2.0, tamaño, tamaño / 2.0); 
 	glTexCoord2d(1, 0); glVertex3f(tamaño / 2.0, tamaño, tamaño / 2.0);
 	glTexCoord2d(0, 0);  glVertex3f(tamaño / 2.0, tamaño, -tamaño / 2.0); 
 	glEnd();
-	glEnable(GL_LIGHTING);
 	glDisable(GL_TEXTURE_2D);
 	glPopMatrix();
 
