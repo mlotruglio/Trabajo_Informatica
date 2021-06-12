@@ -44,7 +44,7 @@ void Tanque::setRecarga(float t) {
 float Tanque::getRecarga() {
 	return recarga;
 }
-oid Tanque::draw() {
+void Tanque::draw() {
 	glPushMatrix();
 	glTranslatef(posicion.x, posicion.y, posicion.z);
 	glPushMatrix();
