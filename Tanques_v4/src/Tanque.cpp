@@ -88,6 +88,7 @@ oid Tanque::draw() {
 	glPopMatrix();
 	glBegin(GL_POLYGON);
 	glColor3ub(255, 0, 255);
+		glNormal3f(0,1,0);
 		glVertex3f(-radiohitbox * 1.5, 0.1, -radiohitbox * 0.75);
 		glVertex3f(-radiohitbox * 1.55, 0.1, -radiohitbox * 0.75);
 		glVertex3f(-radiohitbox * 1.55, 0.1, -radiohitbox * 0.75 + vida/100 * 1.5 *radiohitbox);
@@ -95,6 +96,7 @@ oid Tanque::draw() {
 	glEnd();
 	glBegin(GL_POLYGON);
 	glColor3ub(0, 0, 0);
+		glNormal3f(0,1,0);
 		glVertex3f(-radiohitbox * 1.5, 0.1, +radiohitbox * 0.75);
 		glVertex3f(-radiohitbox * 1.55, 0.1, +radiohitbox * 0.75);
 		glVertex3f(-radiohitbox * 1.55, 0.1, +radiohitbox * 0.75 - (100 - vida) / 100 * 1.5 * radiohitbox);
