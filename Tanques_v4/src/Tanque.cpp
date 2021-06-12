@@ -44,7 +44,7 @@ void Tanque::setRecarga(float t) {
 float Tanque::getRecarga() {
 	return recarga;
 }
-void Tanque::draw() {
+oid Tanque::draw() {
 	glPushMatrix();
 	glTranslatef(posicion.x, posicion.y, posicion.z);
 	glPushMatrix();
@@ -74,15 +74,17 @@ void Tanque::draw() {
 	glPopMatrix();
 	glColor3ub(255, 255, 255);
 	glPushMatrix();
-	glRotated(orientacion, 0, 1, 0);
+	glRotatef(orientacion, 0, 1, 0);
 	glColor3ub(color.red, color.green, color.blue);
-	dibuja::draw("modelos3d/cuerpo.txt");
+	dibuja::draw("modelos3d/cuerpo.txt",radiohitbox/1.5);
 	glPopMatrix();
 	glPushMatrix();
-	glTranslatef(0, 1, 0);
+	glTranslatef(0, radiohitbox/1.5, 0);
 	glColor3ub(color.red, color.green, color.blue);
 	glRotatef(orientacion_torreta, 0, 1, 0);
-	dibuja::draw("modelos3d/torreta.txt");
+	dibuja::draw("modelos3d/torreta.txt",radiohitbox/1.5);
+	glTranslatef(1.2 * radiohitbox / 1.5, 0.3333 * radiohitbox / 1.5, 0);
+	dibuja::draw("modelos3d/cannon.txt",radiohitbox/1.5);
 	glPopMatrix();
 	glBegin(GL_POLYGON);
 	glColor3ub(255, 0, 255);
