@@ -54,6 +54,7 @@ Disparo* Interaction::ataque(Tanque& tank1, Tanque& tank2) {
 		tank2.velocidad = 4.5f;
 		if (tank2.recarga <= 0) {
 			Disparo* aux = new Disparo(tank2.getPosicion(),12.5,tank2.getOrientaciontorreta(),0.2,10,2,10);
+			aux->setPosicion(aux->getPosicion().x, 1.4, aux->getPosicion().z);
 			aux->color.set(150, 0, 0);
 			tank2.resetRecarga();
 			return aux;

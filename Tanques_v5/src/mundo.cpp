@@ -105,6 +105,7 @@ void mundo::raton() {
 			if (jugador.getRecarga() <= 0) {
 				ETSIDI::play("sonidos/disparo.wav");
 				Disparo* d = new Disparo(jugador.getPosicion(),15, jugador.getOrientaciontorreta(),0.2,10,2,7);
+				d->setPosicion(d->getPosicion().x, 1.4, d->getPosicion().z);
 				d->setColor(0, 150, 150);
 				if (disparosjugador.add(d));
 				else delete d;
