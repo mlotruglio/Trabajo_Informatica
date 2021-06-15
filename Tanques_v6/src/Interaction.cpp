@@ -51,16 +51,18 @@ Disparo* Interaction::ataque(Tanque& tank1, Tanque& tank2) {
 	vector3D d = (tank1.posicion - tank2.posicion);
 	if (d.modulo() < distancia_ataque) {
 		tank2.orientacion_torreta = tank2.orientacion = -atan2(d.z, d.x) * 180 / pi;
-		tank2.velocidad = 4.5f;
+		tank2.setVelocidad(1);
 		if (tank2.recarga <= 0) {
 			Disparo* aux = new Disparo(tank2.getPosicion(),12.5,tank2.getOrientaciontorreta(),tank2.getRadiohitbox()*(0.2/1.5),10,2,tank2.getDanio());
 			aux->setPosicion(aux->getPosicion().x, tank2.getRadiohitbox()*(1.4/1.5), aux->getPosicion().z);
 			aux->setColor(tank2.getColor());
+			aux->setVelocidadMax(tank2.getVelocidadMax() * 2);
+			aux->setVelocidad(1);
 			tank2.resetRecarga();
 			return aux;
 		}
 	}
-	else tank2.velocidad = 0;
+	else tank2.setVelocidad(0);
 	return NULL;
 }
 

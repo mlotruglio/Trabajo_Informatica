@@ -5,7 +5,7 @@
 #include "draw.h"
 #include "freeglut.h"
 #define pi 3.14159265358979323846264
-Tanque::Tanque(vector3D _posicion, float _velocidad, float _orientacion, float _radiohitbox ) : ObjetoMovil(_posicion, _velocidad, _orientacion, _radiohitbox) {
+Tanque::Tanque(vector3D _posicion, float _velocidad_max, float _orientacion, float _radiohitbox ) : ObjetoMovil(_posicion, _velocidad_max, _orientacion, _radiohitbox) {
 	orientacion_torreta=0;
 	tiempo_recarga=1;
 	recarga=0;
@@ -14,14 +14,14 @@ Tanque::Tanque(vector3D _posicion, float _velocidad, float _orientacion, float _
 	posicion.y = 0.1;
 	danio = 1;
 }
-Tanque::Tanque(vector3D _posicion, float _velocidad, float _orientacion, float _radiohitbox, float _vida_max,float _tiempo_recarga) : ObjetoMovil(_posicion, _velocidad, _orientacion, _radiohitbox) {
+Tanque::Tanque(vector3D _posicion, float _velocidad_max, float _orientacion, float _radiohitbox, float _vida_max,float _tiempo_recarga,float _danio) : ObjetoMovil(_posicion, _velocidad_max, _orientacion, _radiohitbox) {
 	orientacion_torreta = 0;
 	vida_max = _vida_max;
 	vida = vida_max;
 	tiempo_recarga = _tiempo_recarga;
 	recarga = 0;
 	posicion.y = 0.1;
-	danio = 1;
+	danio = _danio;
 }
 Tanque::Tanque() {
 	orientacion_torreta = 0;
@@ -98,13 +98,20 @@ void Tanque::dibuja() {
 		glPopMatrix();
 	glPopMatrix();
 }
-vector3D& Tanque::getPunteroPosicion() { return posicion; }
-void Tanque::resetRecarga() { recarga = tiempo_recarga; }
+
+void Tanque::setOrientaciontorreta(float _orientacion_torreta) { orientacion_torreta = _orientacion_torreta; }
+float Tanque::getOrientaciontorreta() { return orientacion_torreta; }
+
 void Tanque::setTiempoRecarga(float _tiempo_recarga) { tiempo_recarga = _tiempo_recarga; }
+
+void Tanque::resetRecarga() { recarga = tiempo_recarga; }
 float Tanque::getRecarga() { return recarga; }
+
 void Tanque::setVida(float _vida) { vida = _vida; }
 float Tanque::getVida() { return vida; }
-void Tanque::setOrientaciontorreta(float _orientacion_torreta) {orientacion_torreta = _orientacion_torreta;}
-float Tanque::getOrientaciontorreta() { return orientacion_torreta; }
+
+void Tanque::setVidaMax(float _vida_max) { vida_max = _vida_max; }
+float Tanque::getVidaMax() { return vida_max; }
+
 float Tanque::getDanio() { return danio; }
 void Tanque::setDanio(float d) { danio = d; }

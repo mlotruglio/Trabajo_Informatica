@@ -6,6 +6,7 @@ class ObjetoFijo
 protected:
 	vector3D posicion;
 	float tamanio;
+	char* textura;
 public:
 	ObjetoFijo();
 	ObjetoFijo(vector3D _posicion, float _tamanio=1);
@@ -13,6 +14,7 @@ public:
 	void setPosicion(float, float, float);
 	void setPosicion(vector3D);
 	vector3D getPosicion();
+	void setTextura(const char*);
 	void setTamanio(float);
 	float getTamanio();
 };

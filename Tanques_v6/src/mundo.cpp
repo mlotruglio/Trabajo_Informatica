@@ -12,7 +12,6 @@ mundo::mundo(){
 	loadmap("mapas/map.txt");
 	disparosenemigo.destruirContenido();
 	ETSIDI::playMusica("sonidos/musicota.wav",true);
-	jugador.setDanio(8);
 }
 
 void mundo::refresh() {
@@ -22,32 +21,18 @@ void mundo::refresh() {
 	disparosenemigo.refresh(0.025f);
 	jugador.refresh(0.025f);
 	enemigos.refresh(0.025f);
-	//interaccion jugador con paredes disparosenemigo y enemigos
-	static bool flag = 0;
-	for (int i = 0; i < paredes.getNumero(); i++) {
-		Interaction::colision(jugador, *paredes[i]);
-	}
+	//interaccion enemigo con enemigo paredes disparosjugador jugador y ataque
 	for (int i = 0; i < enemigos.getNumero(); i++) {
+		//interaccion enemigo con jugador
 		Interaction::colision(jugador, *enemigos[i]);
-	}
-	for (int i = 0; i < disparosenemigo.getNumero(); i++) {
-		if (Interaction::colision(jugador, *disparosenemigo[i]) && !flag) {
-			jugador.setVida(jugador.getVida() - disparosenemigo[i]->getDanio());
-			ETSIDI::play("sonidos/player_hit.wav");
-			disparosenemigo.eliminar(disparosenemigo[i]);
-			if (jugador.getVida() <= 0) {
-				flag = 1;
-				jugador.setVida(0);
-				ETSIDI::play("sonidos/muertejugador.wav");
-			}
-		}
-	}
-	//interaccion enemigo con paredes disparosjugador y ataque
-	for (int i = 0; i < enemigos.getNumero(); i++) {
 		//enemigo ataque
 		disparosenemigo.add(Interaction::ataque(jugador, *enemigos[i]));
+		//enemigo con enemigo
+		for (int j = i + 1; j < enemigos.getNumero(); j++) {
+			Interaction::colision(*enemigos[i], *enemigos[j]);
+		}
 		//enemigo con pared
-		for (int j = 0; j < paredes.getNumero(); j++){
+		for (int j = 0; j < paredes.getNumero(); j++) {
 			Interaction::colision(*enemigos[i], *paredes[j]);
 		}
 		//enemigo con disparojugador
@@ -61,23 +46,37 @@ void mundo::refresh() {
 			}
 		}
 	}
-	//interaccion disparos jugador con pared y delete si no quedan rebotes o tiempo
-	for (int i = 0; i < disparosjugador.getNumero() ; i++) {
+	//interaccion disparosjugador con pared y delete si no quedan rebotes o tiempo
+	for (int i = 0; i < disparosjugador.getNumero(); i++) {
 		for (int j = 0; j < paredes.getNumero(); j++)
 			if (Interaction::colision(*disparosjugador[i], *paredes[j])) {
 				disparosjugador[i]->actualizaRebote();
 			}
-		if (disparosjugador[i]->getTime() <= 0|| disparosjugador[i]->getRebote() <= 0)
+		if (disparosjugador[i]->getTime() <= 0 || disparosjugador[i]->getRebote() <= 0)
 			disparosjugador.eliminar(disparosjugador[i]);
 	}
-	//interaccion disparos enemigo con pared y delete si no quedan rebotes o tiempo
+	//interaccion disparosenemigo con pared jugador y delete si no quedan rebotes o tiempo
 	for (int i = 0; i < disparosenemigo.getNumero(); i++) {
-		for (int j = 0; j < paredes.getNumero(); j++)
+		for (int j = 0; j < paredes.getNumero(); j++) {
 			if (Interaction::colision(*disparosenemigo[i], *paredes[j])) {
 				disparosenemigo[i]->actualizaRebote();
 			}
+		}
+		if (Interaction::colision(jugador, *disparosenemigo[i]) && jugador.getVida() > 0) {
+			jugador.setVida(jugador.getVida() - disparosenemigo[i]->getDanio());
+			ETSIDI::play("sonidos/player_hit.wav");
+			disparosenemigo.eliminar(disparosenemigo[i]);
+			if (jugador.getVida() <= 0) {
+				jugador.setVida(0);
+				ETSIDI::play("sonidos/muertejugador.wav");
+			}
+		}
 		if (disparosenemigo[i]->getTime() <= 0 || disparosenemigo[i]->getRebote() <= 0)
 			disparosenemigo.eliminar(disparosenemigo[i]);
+	}
+	//interaccion paredes con jugador
+	for (int i = 0; i < paredes.getNumero(); i++) {
+		Interaction::colision(jugador, *paredes[i]);
 	}
 }
 void mundo::dibuja(){
@@ -98,7 +97,6 @@ void mundo::mouseclick(int button, int state) {
 void mundo::mousemotion(int x, int y) {
 	estadosentradas.setmousepos(x, y);
 }
-
 void mundo::raton() {
 		jugador.setOrientaciontorreta(camara.getorientation() + atan2(400.0 - estadosentradas.getmousepos()[0], 300.0 - estadosentradas.getmousepos()[1]) * 180.0 / 3.1415926535) ;
 		
@@ -108,20 +106,20 @@ void mundo::raton() {
 				Disparo* d = new Disparo(jugador.getPosicion(),15, jugador.getOrientaciontorreta(),0.2,10,2,jugador.getDanio());
 				d->setPosicion(d->getPosicion().x, 1.4, d->getPosicion().z);
 				d->setColor(0, 150, 150);
+				d->setVelocidad(1);
 				if (disparosjugador.add(d));
 				else delete d;
 				jugador.resetRecarga();
 			}
 		}
 }
-
 void mundo::tecla()
 {
 	static bool lastkey[255];
 	if (estadosentradas.getkeystates()['w']|| estadosentradas.getkeystates()['W'])
-		jugador.setVelocidad(7.5f);
+		jugador.setVelocidad(1);
 	if (estadosentradas.getkeystates()['s'] || estadosentradas.getkeystates()['S'])
-		jugador.setVelocidad(-7.5f);
+		jugador.setVelocidad(-1);
 	if (estadosentradas.getkeystates()['a'] || estadosentradas.getkeystates()['A'])
 		jugador.setOrientacion(jugador.getOrientacion()+3.0f);
 	if (estadosentradas.getkeystates()['d'] || estadosentradas.getkeystates()['D'])
@@ -134,7 +132,6 @@ void mundo::tecla()
 	for (int i = 0; i < 255; i++) lastkey[i] = estadosentradas.getkeystates()[i];
 
 }
-
 mundo::~mundo()
 {
 	disparosjugador.destruirContenido();
@@ -143,7 +140,6 @@ mundo::~mundo()
 	paredes.destruirContenido();
 	suelos.destruirContenido();
 }
-
 void mundo::loadmap(const char* filename) {
 	FILE* file = fopen(filename, "r");
 	char key;
@@ -161,57 +157,39 @@ void mundo::loadmap(const char* filename) {
 				jugador.setPosicion((float)-j * escala, 0.1, (float)i * escala);
 				jugador.setColor(0,150, 150);
 				jugador.setTiempoRecarga(0.25);
+				jugador.setDanio(8);
+				jugador.setVelocidadMax(10);
 				Suelo* a = new Suelo((float)-j * escala, 0, (float)i * escala, escala);
 				suelos.add(a);
 			}
 			if (key == '1') {
 				vector3D v(-j * escala, 0.1, i * escala);
-				Tanque* aux = new Tanque(v, 7, 0, 3.0, 25, 1);
-				aux->setPosicion((float)-j * escala, 0.1, (float)i * escala);
-				aux->setRadiohitbox(1.2);
+				Tanque* aux = new Tanque(v, 7, 0, 1.2, 25, 0.5,2);
 				aux->setColor(50, 150, 0);
-				aux->setTiempoRecarga(0.5);
-				aux->setDanio(2);
-				
 				enemigos.add(aux);
 				Suelo* a = new Suelo((float)-j * escala, 0, (float)i * escala, escala);
 				suelos.add(a);
 			}
 			if (key == '2') {
 				vector3D v(-j * escala, 0.1, i * escala);
-				Tanque* aux = new Tanque(v, 7, 0, 3.0, 50, 1);
-				aux->setPosicion((float)-j * escala, 0.1, (float)i * escala);
-				aux->setRadiohitbox(1.5);
+				Tanque* aux = new Tanque(v, 4, 0, 1.5, 50, 0.5,5);
 				aux->setColor(150, 150, 0);
-				aux->setTiempoRecarga(0.5);
-				aux->setDanio(5);
-				
 				enemigos.add(aux);
 				Suelo* a = new Suelo((float)-j * escala, 0, (float)i * escala, escala);
 				suelos.add(a);
 			}
 			if (key == '3') {
 				vector3D v(-j * escala, 0.1, i * escala);
-				Tanque* aux = new Tanque(v, 7, 0, 3.0, 75, 1);
-				aux->setPosicion((float)-j * escala, 0.1, (float)i * escala);
-				aux->setRadiohitbox(2.0);
+				Tanque* aux = new Tanque(v, 3, 0, 2.0, 75, 0.5,10);
 				aux->setColor(150, 0, 0);
-				aux->setTiempoRecarga(0.5);
-				aux->setDanio(10);
-				
 				enemigos.add(aux);
 				Suelo* a = new Suelo((float)-j * escala, 0, (float)i * escala, escala);
 				suelos.add(a);
 			}
 			if (key == '4') {
 				vector3D v(-j * escala, 0.1, i * escala);
-				Tanque* aux = new Tanque(v,7,0,3.0,100,1);
-				aux->setPosicion((float)-j * escala, 0.1, (float)i * escala);
-				aux->setRadiohitbox(3.0);
+				Tanque* aux = new Tanque(v,2,0,3.0,100,0.5,20);
 				aux->setColor(50, 50, 50);
-				aux->setTiempoRecarga(0.5);
-				aux->setDanio(20);
-				
 				enemigos.add(aux);
 				Suelo* a = new Suelo((float)-j * escala, 0, (float)i * escala, escala);
 				suelos.add(a);

@@ -1,5 +1,5 @@
 #include "ObjetoFijo.h"
-
+#include <cstring>
 
 ObjetoFijo::ObjetoFijo() {
 	tamanio = 1.0f;
@@ -19,3 +19,8 @@ void ObjetoFijo::setPosicion(vector3D _posicion) { posicion = _posicion; }
 vector3D ObjetoFijo::getPosicion() { return posicion; }
 void ObjetoFijo::setTamanio(float _tamanio) { tamanio = _tamanio; }
 float ObjetoFijo::getTamanio() { return tamanio; }
+void ObjetoFijo::setTextura(const char* filename) {
+	char* aux = new char[strlen(filename)];
+	textura = aux;
+	strcpy(textura, filename);
+}

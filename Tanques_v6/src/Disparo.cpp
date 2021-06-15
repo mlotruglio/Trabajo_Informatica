@@ -2,23 +2,17 @@
 #include <math.h>
 #include <stdio.h>
 #define pi 3.14159265358979323846264
-Disparo::Disparo(vector3D _posicion, float _velocidad, float _orientacion, float _radiohitbox ): ObjetoMovil(_posicion, _velocidad, _orientacion, _radiohitbox) {
+Disparo::Disparo(vector3D _posicion, float _velocidad_max, float _orientacion, float _radiohitbox ): ObjetoMovil(_posicion, _velocidad_max, _orientacion, _radiohitbox) {
 	tiempo_vida =10;
 	rebotes = 2;
 	danio = 10;
 }
-Disparo::Disparo(vector3D _posicion, float _velocidad , float _orientacion , float _radiohitbox , float _tiempo_vida , int _rebotes , float _danio ) :ObjetoMovil(_posicion, _velocidad, _orientacion, _radiohitbox) {
+Disparo::Disparo(vector3D _posicion, float _velocidad_max , float _orientacion , float _radiohitbox , float _tiempo_vida , int _rebotes , float _danio ) :ObjetoMovil(_posicion, _velocidad_max, _orientacion, _radiohitbox) {
 	tiempo_vida = _tiempo_vida;
 	rebotes = _rebotes;
 	danio = _danio;
 }
 Disparo::Disparo() {
-	radiohitbox = 0.2;
-	posicion.x = 0;
-	posicion.y = 0;
-	posicion.z = 0;
-	orientacion = 0;
-	velocidad = 0;
 	rebotes = 2;
 	tiempo_vida = 10.0f;
 	danio = 1;

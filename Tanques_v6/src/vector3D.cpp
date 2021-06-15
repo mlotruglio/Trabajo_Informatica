@@ -6,7 +6,7 @@ vector3D::vector3D(float xv, float yv,float zv){
 	z = zv;
 }
 float vector3D::modulo(){
-	return (float)sqrt(x*x + y*y+z*z);
+	return (float)sqrt(x*x+z*z);
 }
 vector3D vector3D::unitario(){
 	vector3D retorno(x, y,z);

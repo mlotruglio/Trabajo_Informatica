@@ -11,8 +11,8 @@ private:
 	float rebotes;
 	float danio;
 public:
-	Disparo(vector3D _posicion, float _velocidad, float _orientacion, float _radiohitbox = 0.2);
-	Disparo(vector3D _posicion, float _velocidad = 0, float _orientacion = 0, float _radiohitbox = 0.2, float _tiempo_vida = 10, int rebotes = 2, float danio = 1);
+	Disparo(vector3D _posicion, float _velocidad_max, float _orientacion, float _radiohitbox = 0.2);
+	Disparo(vector3D _posicion, float _velocidad_max = 0, float _orientacion = 0, float _radiohitbox = 0.2, float _tiempo_vida = 10, int rebotes = 2, float danio = 1);
 	Disparo();
 
 	void dibuja();
