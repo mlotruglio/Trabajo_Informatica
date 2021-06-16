@@ -1,31 +1,68 @@
-BBBBBBBBBBBBB
-BgggggggggggB
-BgggggggggggBBBBBBBBBBBBBBBBBB     BBBBBBBBB
-Bgggg^gggggggggggggggggggggggB     BgggggggB
-BggggggggggggggggggggggggggggB     BgggggggB
-BgggggggggggBBBBBBgggBBBBBgggB     BgggBgggB
-BBBBBBBBBBBBB    BgggggB BgggB     BgggBgggB
-                 Bgg1ggB BgggB     BgggBgggB
-                 BBBBBBB BgggBBBBBBBgggBgggB
-                         BgggggggggggggBgggB
-                         Bggggg2gggggggBgggB
-                         BgggggggggggggBg3gB
-                         BBBBBBBBBBBBBBBBggB
-                         BgggggggggggggggggB
-                         BgggggggggggggggggB
-                         BgggggggggggggggggB
-                         BgggggggggggggggggB
-                         BgggggggggggggggggB
-                         BgggggggggggggggggB
-                         BgggggggggggggggggB
-                         BgggggggggggggggggB
-                         Bgggggggg4ggggggggB
-                         BgggggggggggggggggB
-                         BgggggggggggggggggB
-                         BBBBBBBBBBBBBBBBBBB
-
-
-
-
-
-
+ .............................LBBBBBL
+ .............................BcccccB
+ ...........................LBLcpppcLBL
+ ...........................BcccpppcccB
+,...........................BcpppppppcB
+ ...........................BcpppppppcB
+ ...........................BcpppppppcB
+ ...........................Bcppp4pppcB
+ ...........................BcpppppppcB
+............................BcpppppppcB
+ ...........................BcpppppppcB
+ ...........................BcccpppcccB
+ ...........................LBBcpppcBBL
+ ...........................LBBcpppcBBL
+,...........................BcccpppcccB
+ ...........................BcpppppppcB
+ ...........................BcpppppppcB
+ ...........................Bcppp2pppcB
+ ...........................BcpppppppcB
+............................BcpppppppcB
+ ...........................BcccpppcccB
+ ...........................LBBLddgLBBL
+ ............................GgggdgggG
+ ............................GgggddggG
+,...........................GGggdddggGG
+ .....ccmmccc...............Gggg3ddgggG
+ ...mccLBBBLmmm............GGgggddddggGG
+ ..ccBBBpppBBBcc.........GGGgggddgdddggGGG
+ .mcBBpppppppBBGGGGGGGGGGGgggggddgggdddggGGG
+..mBBpppppppppBBcgggggggggggggddggsggddggggGG
+ ccBpppppppppppBcggggggggggggddgsssggddddgggGGG
+ cLBpppLpppLpppBLggggggggggdddgsCsssgggdddggggGG
+ cBpppppppppppppcggddgdddgddggssCCCsgggggdddgggGG
+ cBpppppp^ppppppcddddddddddddggCCCCsggggdddddgggG
+,cBpppppppppppppcddggdggddggddggCCsgggddddggddggGG
+ mLBpppLpppLpppBLggggggggggggddggssggdddgggggddggG
+ mmBpppppppppppBmggggggggggggd1dggggddd1ggggggddgGG
+ .mBBpppppppppBBmgggggggggggggd1dddd1dgggggggggddgG
+ .ccBBpppppppBBGGGGGGGGGGGgggggdddggdggggGGGGGgdddG
+ ..ccBBBpppBBBmc.........GGSggg1gddg1ggGGG...GggdgG
+ ...ccmLBBBLccm............SSsgg1gggggGG.....GGgddG
+ .....mmmcccc...............Sssssss1ggG.......GddgG
+ ...........................SSss1sssgGG.......GgggG
+.............................SSSsssSSG........GgdgG
+ ..............................SSSSS..........GgddG
+ .............................................GgddG
+ .......................................CCCCC.GddgG
+ .....................................CCMmmcCCCgddG
+,....................................CCmmmccccCgdgG
+ .........CCCCCCCCCCCCCCCCCCC.......MMmcmcdcd3cddgG
+ .........CpppppppppppppppppC.......McccccddddddggG
+ .........CpppppppppppppppppC......CCccd2ddddddcgGG
+ .........CppppppBBBBBppppppC......CcccddcdddddccG
+ .........Cppp1pppBBBppp1pppC......Cccddcdd2cddccG
+ .........CpppppppppppppppppC......CcccddddddcdccG
+..........CppppppppcppppppppC......CCccddddcdcdcCC
+ .........CppBpppppcpppppBppCCCCCCCCCccdcd2dccccC
+ .........CppBBpppcccpppBBppccccccccccddcccccccCC
+ .........CppBBpccc4cccpBBppccccccccddddccccccCC
+ .........CppBBpppcccpppBBppccccccccccccccccCCC
+,.........CppBpppppcpppppBppCCCCCCCCCCCCCCCCC
+ .........CppppppppcppppppppC
+ .........Cppp1ppppppppp1pppC
+ .........CpppppppBBBpppppppC
+ .........CppppppBBBBBppppppC
+..........CpppppppppppppppppC
+ .........CpppppppppppppppppC
+ .........CCCCCCCCCCCCCCCCCCC
