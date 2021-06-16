@@ -1,6 +1,6 @@
 #pragma once
 #include "vector3D.h"
-#define MAX 1000
+#define MAX 3000
 
 template<typename T> class Lista {
 

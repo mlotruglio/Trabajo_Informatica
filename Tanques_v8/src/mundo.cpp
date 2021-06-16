@@ -173,7 +173,7 @@ bool mundo::loadmap(const char* filename) {
 				jugador.setDanio(8);
 				jugador.setVelocidadMax(15);
 				jugador.setVelocidadDisparo(20);
-				Suelo* a = new Suelo((float)-j * escala, 0, (float)i * escala, escala, Suelo::cosas::grass);
+				Suelo* a = new Suelo((float)-j * escala, 0, (float)i * escala, escala, suelos[suelos.getNumero()-1]->Suelo::getTexturaactual());
 				suelos.add(a);
 			}
 			if (key == '1') {
@@ -181,7 +181,7 @@ bool mundo::loadmap(const char* filename) {
 				Tanque* aux = new Tanque(v, 10, 0, 1.2, 25, 0.5, 2,22.5);
 				aux->setColor(50, 150, 0);
 				enemigos.add(aux);
-				Suelo* a = new Suelo((float)-j * escala, 0, (float)i * escala, escala, Suelo::cosas::grass);
+				Suelo* a = new Suelo((float)-j * escala, 0, (float)i * escala, escala, suelos[suelos.getNumero()-1]->Suelo::getTexturaactual());
 				suelos.add(a);
 			}
 			if (key == '2') {
@@ -189,7 +189,7 @@ bool mundo::loadmap(const char* filename) {
 				Tanque* aux = new Tanque(v, 6, 0, 1.5, 50, 0.5, 5,22.5);
 				aux->setColor(150, 150, 0);
 				enemigos.add(aux);
-				Suelo* a = new Suelo((float)-j * escala, 0, (float)i * escala, escala, Suelo::cosas::grass);
+				Suelo* a = new Suelo((float)-j * escala, 0, (float)i * escala, escala, suelos[suelos.getNumero()-1]->Suelo::getTexturaactual());
 				suelos.add(a);
 			}
 			if (key == '3') {
@@ -197,7 +197,7 @@ bool mundo::loadmap(const char* filename) {
 				Tanque* aux = new Tanque(v, 4, 0, 2.0, 75, 0.5, 15,15);
 				aux->setColor(150, 0, 0);
 				enemigos.add(aux);
-				Suelo* a = new Suelo((float)-j * escala, 0, (float)i * escala, escala, Suelo::cosas::grass);
+				Suelo* a = new Suelo((float)-j * escala, 0, (float)i * escala, escala, suelos[suelos.getNumero()-1]->Suelo::getTexturaactual());
 				suelos.add(a);
 			}
 			if (key == '4') {
@@ -205,23 +205,71 @@ bool mundo::loadmap(const char* filename) {
 				Tanque* aux = new Tanque(v, 2, 0, 3.0, 100, 2, 20,30);
 				aux->setColor(50, 50, 50);
 				enemigos.add(aux);
-				Suelo* a = new Suelo((float)-j * escala, 0, (float)i * escala, escala, Suelo::cosas::grass);
+				Suelo* a = new Suelo((float)-j * escala, 0, (float)i * escala, escala, suelos[suelos.getNumero()-1]->Suelo::getTexturaactual());
 				suelos.add(a);
 			}
-			if (key == 'O') {
+			if (key == 'B') {
 				Pared* aux = new Pared((float)-j * escala, 0, (float)i * escala, escala, Pared::cosas::stone_bricks);
 				paredes.add(aux);
+			}
+			if (key == 'b') {
+				Suelo* aux = new Suelo((float)-j * escala, 0, (float)i * escala, escala, Suelo::cosas::stone_bricks);
+				suelos.add(aux);
+			}
+			if (key == 'G') {
+				Pared* aux = new Pared((float)-j * escala, 0, (float)i * escala, escala, Pared::cosas::grass);
+				paredes.add(aux);
+			}
+			if (key == 'g') {
+				Suelo* aux = new Suelo((float)-j * escala, 0, (float)i * escala, escala, Suelo::cosas::grass);
+				suelos.add(aux);
+			}
+			if (key == 'M') {
+				Pared* aux = new Pared((float)-j * escala, 0, (float)i * escala, escala, Pared::cosas::mossy_cobblestone);
+				paredes.add(aux);
+			}
+			if (key == 'm') {
+				Suelo* aux = new Suelo((float)-j * escala, 0, (float)i * escala, escala, Suelo::cosas::mossy_cobblestone);
+				suelos.add(aux);
 			}
 			if (key == 'S') {
 				Pared* aux = new Pared((float)-j * escala, 0, (float)i * escala, escala, Pared::cosas::sand);
 				paredes.add(aux);
 			}
-			if (key == '.') {
-				Suelo* aux = new Suelo((float)-j * escala, 0, (float)i * escala, escala, Suelo::cosas::grass);
-				suelos.add(aux);
-			}
 			if (key == 's') {
 				Suelo* aux = new Suelo((float)-j * escala, 0, (float)i * escala, escala, Suelo::cosas::sand);
+				suelos.add(aux);
+			}
+			if (key == 'P') {
+				Pared* aux = new Pared((float)-j * escala, 0, (float)i * escala, escala, Pared::cosas::oak_planks);
+				paredes.add(aux);
+			}
+			if (key == 'p') {
+				Suelo* aux = new Suelo((float)-j * escala, 0, (float)i * escala, escala, Suelo::cosas::oak_planks);
+				suelos.add(aux);
+			}
+			if (key == 'C') {
+				Pared* aux = new Pared((float)-j * escala, 0, (float)i * escala, escala, Pared::cosas::cobblestone);
+				paredes.add(aux);
+			}
+			if (key == 'c') {
+				Suelo* aux = new Suelo((float)-j * escala, 0, (float)i * escala, escala, Suelo::cosas::cobblestone);
+				suelos.add(aux);
+			}
+			if (key == 'L') {
+				Pared* aux = new Pared((float)-j * escala, 0, (float)i * escala, escala, Pared::cosas::spruce_log);
+				paredes.add(aux);
+			}
+			if (key == 'l') {
+				Suelo* aux = new Suelo((float)-j * escala, 0, (float)i * escala, escala, Suelo::cosas::spruce_log);
+				suelos.add(aux);
+			}
+			if (key == 'D') {
+				Pared* aux = new Pared((float)-j * escala, 0, (float)i * escala, escala, Pared::cosas::coarse_dirt);
+				paredes.add(aux);
+			}
+			if (key == 'd') {
+				Suelo* aux = new Suelo((float)-j * escala, 0, (float)i * escala, escala, Suelo::cosas::coarse_dirt);
 				suelos.add(aux);
 			}
 			i += 1;

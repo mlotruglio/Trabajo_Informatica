@@ -9,7 +9,7 @@ protected:
 	float tamanio;
 	char* textura;
 public:
-	enum cosas { none, stone_bricks, grass, sand };
+	enum cosas { none, stone_bricks, grass, sand,spruce_log,oak_planks,cobblestone,mossy_cobblestone,coarse_dirt};
 	cosas texturas;
 	ObjetoFijo();
 	ObjetoFijo(vector3D _posicion, float _tamanio = 1);
@@ -18,5 +18,6 @@ public:
 	void setPosicion(vector3D);
 	vector3D getPosicion();
 	void setTamanio(float);
+	cosas getTexturaactual() { return texturas; }
 	float getTamanio();
 };

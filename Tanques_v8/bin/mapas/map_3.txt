@@ -1,28 +1,28 @@
-OOOOOOOOOOOOO
-O...........O
-O...........OOOOOOOOOOOOOOOOOO     OOOOOOOOO
-O....^.......................O     O.......O
-O............................O     O.......O
-O...........OOOOOO...OOOOO...O     O...O...O
-OOOOOOOOOOOOOOO  O.....O O...O     O...O...O
-                 O..1..O O...O     O...O...O
-                 OOOOOOO O...OOOOOOO...O...O
-                         O.............O...O
-                         O.....2.......O...O
-                         O.............O.3.O
-                         OOOOOOOOOOOOOOOO..O
-                         O.................O
-                         O.................O
-                         O.................O
-                         O.................O
-                         O.................O
-                         O.................O
-                         O.................O
-                         O.................O
-                         O........4........O
-                         O.................O
-                         O.................O
-                         OOOOOOOOOOOOOOOOOOO
+BBBBBBBBBBBBB
+BgggggggggggB
+BgggggggggggBBBBBBBBBBBBBBBBBB     BBBBBBBBB
+Bgggg^gggggggggggggggggggggggB     BgggggggB
+BggggggggggggggggggggggggggggB     BgggggggB
+BgggggggggggBBBBBBgggBBBBBgggB     BgggBgggB
+BBBBBBBBBBBBB    BgggggB BgggB     BgggBgggB
+                 Bgg1ggB BgggB     BgggBgggB
+                 BBBBBBB BgggBBBBBBBgggBgggB
+                         BgggggggggggggBgggB
+                         Bggggg2gggggggBgggB
+                         BgggggggggggggBg3gB
+                         BBBBBBBBBBBBBBBBggB
+                         BgggggggggggggggggB
+                         BgggggggggggggggggB
+                         BgggggggggggggggggB
+                         BgggggggggggggggggB
+                         BgggggggggggggggggB
+                         BgggggggggggggggggB
+                         BgggggggggggggggggB
+                         BgggggggggggggggggB
+                         Bgggggggg4ggggggggB
+                         BgggggggggggggggggB
+                         BgggggggggggggggggB
+                         BBBBBBBBBBBBBBBBBBB
 
 
 
